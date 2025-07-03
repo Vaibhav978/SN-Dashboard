@@ -1,0 +1,404 @@
+.tab-navigation {
+  margin-bottom: 40px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px 40px; /* Increase top/bottom padding from 50px to 80px */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+/* Add subtle background pattern */
+.tab-navigation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(102, 126, 234, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(118, 75, 162, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Tab Button Styling */
+.tab-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border: 2px solid #e9ecef;
+  background: #ffffff;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #6c757d;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  min-width: 120px;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Hover effect background */
+.tab-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.tab-button:hover::before {
+  left: 100%;
+}
+
+/* Tab Button Hover State */
+.tab-button:hover {
+  border-color: #007bff;
+  color: #007bff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 123, 255, 0.2);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+}
+
+/* Active Tab Button */
+.tab-button--active {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border-color: #007bff;
+  color: white;
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.3);
+  transform: translateY(-2px);
+  font-weight: 600;
+}
+
+.tab-button--active::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.tab-button--active:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+  border-color: #0056b3;
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 123, 255, 0.4);
+}
+
+/* Tab Icon */
+.tab-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.tab-button:hover .tab-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.tab-button--active .tab-icon {
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+}
+
+.tab-button--active:hover .tab-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+/* Tab Name */
+.tab-name {
+  font-weight: inherit;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
+
+.tab-button:hover .tab-name {
+  letter-spacing: 0.5px;
+}
+
+/* Focus States for Accessibility */
+.tab-button:focus {
+  outline: 3px solid rgba(0, 123, 255, 0.3);
+  outline-offset: 2px;
+}
+
+.tab-button--active:focus {
+  outline-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Department-specific color themes */
+.tab-button[data-department="Technology"]:hover,
+.tab-button[data-department="Technology"].tab-button--active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+}
+
+.tab-button[data-department="Product Management"]:hover,
+.tab-button[data-department="Product Management"].tab-button--active {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-color: #f093fb;
+}
+
+.tab-button[data-department="User Experience"]:hover,
+.tab-button[data-department="User Experience"].tab-button--active {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  border-color: #4facfe;
+}
+
+.tab-button[data-department="Marketing"]:hover,
+.tab-button[data-department="Marketing"].tab-button--active {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  border-color: #43e97b;
+}
+
+.tab-button[data-department="Sales"]:hover,
+.tab-button[data-department="Sales"].tab-button--active {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  border-color: #fa709a;
+}
+
+.tab-button[data-department="Customer Success"]:hover,
+.tab-button[data-department="Customer Success"].tab-button--active {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  border-color: #a8edea;
+}
+
+.tab-button[data-department="People Operations"]:hover,
+.tab-button[data-department="People Operations"].tab-button--active {
+  background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+  border-color: #d299c2;
+}
+
+.tab-button[data-department="Finance"]:hover,
+.tab-button[data-department="Finance"].tab-button--active {
+  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  border-color: #89f7fe;
+}
+
+.tab-button[data-department="Operations"]:hover,
+.tab-button[data-department="Operations"].tab-button--active {
+  background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);
+  border-color: #fdbb2d;
+}
+
+/* Loading state for tabs */
+.tab-navigation--loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.tab-navigation--loading .tab-button {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  color: transparent;
+  border-color: #e0e0e0;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .tab-list {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #007bff #f1f3f4;
+  }
+  
+  .tab-list::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .tab-list::-webkit-scrollbar-track {
+    background: #f1f3f4;
+    border-radius: 3px;
+  }
+  
+  .tab-list::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 3px;
+  }
+  
+  .tab-list::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+  }
+}
+
+@media (max-width: 768px) {
+  .tab-navigation {
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+  
+  .tab-list {
+    gap: 10px;
+  }
+  
+  .tab-button {
+    flex-shrink: 0;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+  
+  .tab-icon {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-navigation {
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+  }
+  
+  .tab-list {
+    gap: 8px;
+  }
+  
+  .tab-button {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    min-width: 90px;
+    border-radius: 25px;
+  }
+  
+  .tab-icon {
+    font-size: 1.1rem;
+  }
+  
+  .tab-name {
+    display: none;
+  }
+  
+  /* Show only icons on very small screens */
+  .tab-button {
+    min-width: 50px;
+    padding: 12px;
+  }
+}
+
+/* Animation for tab entrance */
+.tab-button {
+  animation: slideInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.tab-button:nth-child(1) { animation-delay: 0.1s; }
+.tab-button:nth-child(2) { animation-delay: 0.2s; }
+.tab-button:nth-child(3) { animation-delay: 0.3s; }
+.tab-button:nth-child(4) { animation-delay: 0.4s; }
+.tab-button:nth-child(5) { animation-delay: 0.5s; }
+.tab-button:nth-child(6) { animation-delay: 0.6s; }
+.tab-button:nth-child(7) { animation-delay: 0.7s; }
+.tab-button:nth-child(8) { animation-delay: 0.8s; }
+.tab-button:nth-child(9) { animation-delay: 0.9s; }
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .tab-button {
+    border-width: 3px;
+    font-weight: 600;
+  }
+  
+  .tab-button--active {
+    border-width: 3px;
+    font-weight: 700;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .tab-button,
+  .tab-icon,
+  .tab-name {
+    animation: none;
+    transition: none;
+  }
+  
+  .tab-button:hover {
+    transform: none;
+  }
+  
+  .tab-button:hover .tab-icon {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .tab-navigation {
+    background: #ffffff !important;
+    box-shadow: none !important;
+    border: 2px solid #000 !important;
+  }
+  
+  .tab-button {
+    background: #ffffff !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+  }
+  
+  .tab-button--active {
+    background: #f0f0f0 !important;
+    font-weight: 700 !important;
+  }
+}
+
+/* Dark mode support (if implemented) */
+@media (prefers-color-scheme: dark) {
+  .tab-navigation {
+    background: #2c3e50;
+    border-color: #34495e;
+  }
+  
+  .tab-button {
+    background: #34495e;
+    border-color: #4a5f7a;
+    color: #ecf0f1;
+  }
+  
+  .tab-button:hover {
+    background: #4a5f7a;
+    border-color: #007bff;
+  }
+}
